@@ -22,6 +22,7 @@ config = Config(
     log_file=args.log_file,
     mapping=args.mapping,
     network_timeout=args.network_timeout,
+    num_worker_threads=args.num_worker_threads,
     pod=args.pod,
     quick=args.quick,
     remote=args.remote,
@@ -38,7 +39,7 @@ set_config(config)
 # Running all other registered plugins before execution
 pm.hook.load_plugin(args=args)
 
-from kube_hunter.core.events import handler
+from kube_hunter.core.events.event_handler import handler
 from kube_hunter.core.events.types import HuntFinished, HuntStarted
 from kube_hunter.modules.discovery.hosts import RunningAsPodEvent, HostScanEvent
 from kube_hunter.modules.report import get_reporter, get_dispatcher

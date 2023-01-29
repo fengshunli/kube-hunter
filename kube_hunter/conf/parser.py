@@ -133,6 +133,14 @@ def parser_add_arguments(parser):
 
     parser.add_argument("--network-timeout", type=float, default=5.0, help="network operations timeout")
 
+    parser.add_argument(
+        "--num-worker-threads",
+        type=int,
+        default=800,
+        help="In some environments the default thread count (800) can cause the process to crash. "
+        "In the case of a crash try lowering the thread count",
+    )
+
 
 def parse_args(add_args_hook):
     """
